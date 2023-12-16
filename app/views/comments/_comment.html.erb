@@ -1,0 +1,13 @@
+<% unless comment.archived? %>
+
+<p class="text-slate-500 font-bold my-2"><strong><%= comment.commenter %></strong> at <%= comment.created_at %></p>
+
+<div class="bg-white p-4 rounded-lg shadow-md mb-4">
+    <p class="text-slate-700"><%= comment.body %></p>
+    <p class="text-slate-500 my-2">
+    <%= link_to "Destroy Comment", [comment.article, comment], data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
+    </p>
+</div>
+
+
+<% end %>

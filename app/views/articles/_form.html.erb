@@ -1,0 +1,28 @@
+<%= form_with model: @article do |form| %>
+    <div class="mb-4">
+        <%= form.label :status, class: "block text-slate-700 font-bold mb-2" %>
+        <%= form.select :status, Visible::VALID_STATUSES, { selected: article.status || 'public' }, { class: "border p-2 rounded-sm focus:outline-none focus:border-slate-500 w-1/5" } %>
+    </div>
+    <div class="mb-4">
+        <%= form.label :title, class: "block text-slate-700 font-bold mb-2" %>
+        <%= form.text_field :title, class: "w-full p-2 border rounded-sm focus:outline-none focus:border-slate-500" %>
+        <% @article.errors.full_messages_for(:title).each do |message| %>
+            <div class="text-red-500"><%= message %></div>
+        <% end %>
+    </div>
+    <div class="mb-4">
+        <%= form.label :body, class: "block text-slate-700 font-bold mb-2" %>
+        <%= form.text_area :body, class: "w-full p-2 border rounded-sm focus:outline-none focus:border-slate-500", rows: 6 %>
+        <% @article.errors.full_messages_for(:body).each do |message| %>
+            <div class="text-red-500"><%= message %></div>
+        <% end %>
+    </div>
+
+    <div class="flex items-center justify-between">
+        <%= form.submit(@article.new_record? ? "Create Article" : "Update Article", class: "px-4 py-2 bg-slate-500 text-white rounded-sm hover:bg-slate-600 focus:outline-none cursor-pointer")  %>
+
+        <!-- <a href="/" class="px-4 py-2 bg-slate-500 text-white rounded-sm hover:bg-slate-600 focus:outline-none cursor-pointer">
+            Home
+        </a> -->
+    </div>
+<% end %>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Blog</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "tailwind", "inter-font", "application.tailwind", "application", "data-turbo-track": "reload" %>
+  </head>
+
+  <body class="min-h-screen flex flex-col justify-between">
+    <header class="flex items-center justify-evenly bg-slate-800 p-4 text-white">
+        <h1 class="text-2xl font-bold text-center">My Blog</h1>
+        <nav class="flex gap-4 items-center">
+          <%= link_to "Home", root_path, class: "text-white hover:underline" %>
+          <%= link_to "New Article", new_article_path, class: "text-white hover:underline" %>
+          
+        </nav>
+    </header>
+
+    <main class="container mx-auto my-2 px-5 flex-grow">
+        <%= yield %>
+    </main>
+
+    <footer class="flex items-center justify-center gap-4 bg-slate-800 p-4 text-white">
+      &copy; <%= Time.now.year %> My Blog
+    </footer>
+  </body>
+</html>

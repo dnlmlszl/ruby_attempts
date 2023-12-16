@@ -1,0 +1,19 @@
+<%= form_with model: [ @article, @article.comments.build ] do |form| %>
+    <div class="mb-4">
+        <%= form.label :status, class: "block text-slate-700 font-bold mb-2" %>
+        <%= form.select :status, Visible::VALID_STATUSES, { selected: 'public' }, { class: "border p-2 rounded-sm focus:outline-none focus:border-slate-500 w-1/5" } %>
+    </div>
+            
+    <div class="mb-4">
+        <%= form.label :commenter, class: "block text-slate-700 font-bold mb-2" %>
+        <%= form.text_field :commenter, class: "w-full p-2 border rounded-sm focus:outline-none focus:border-slate-500" %>
+    </div>
+    <div class="mb-4">
+        <%= form.label :body, class: "block text-slate-700 font-bold mb-2" %>
+        <%= form.text_area :body, class: "w-full p-2 border rounded-sm focus:outline-none focus:border-slate-500", rows: 6 %>
+    </div>
+    <div class="mb-4">
+        <%= form.submit "Create Comment", class: "px-4 py-2 bg-slate-500 text-white rounded-sm hover:bg-slate-600 focus:outline-none cursor-pointer" %>
+    </div>
+
+<% end %>
